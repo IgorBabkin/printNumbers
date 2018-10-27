@@ -11,6 +11,7 @@
     "test": "mocha 'src/**/*.spec.ts' --require ts-node/register",
     "precommit": "yarn test",
     "prepush": "yarn test",
+    "predeploy": "webpack",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
