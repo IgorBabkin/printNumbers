@@ -24,7 +24,7 @@ async function doJob(job: () => Promise<void>, attempt: number): Promise<void> {
     }
 }
 
-function consoleLog(value: any): Promise<void> {
+function log(value: any): Promise<void> {
     return console.log(value) as any;
 }
 
@@ -32,7 +32,7 @@ export async function printNumbers(from: number, to: number): Promise<number[]> 
     const failed: number[] = [];
     for (let i = from; i <= to; i++) {
         try {
-            await doJob(() => consoleLog(decorateNumber(i)), 3);
+            await doJob(() => log(decorateNumber(i)), 3);
         } catch (e) {
             failed.push(i);
         }
