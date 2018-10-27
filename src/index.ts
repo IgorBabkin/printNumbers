@@ -1,10 +1,11 @@
 import {decorateNumber, doJob} from './lib';
 
 function printInDocument(message: string): void {
-    const root = document.getElementById('root');
+    const root = document.getElementById('output');
     const div = document.createElement('div');
     div.innerText = message;
     root.appendChild(div);
+    window.scrollTo(0, document.body.scrollHeight);
 }
 
 export function printInConsole(...args: any[]): Promise<void> {
