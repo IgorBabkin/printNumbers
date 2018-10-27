@@ -25,8 +25,9 @@ export async function doJob(job: IJob, attempt: number): Promise<void> {
     }
 }
 
-function log(value: any): Promise<void> {
-    return console.log(value) as any;
+export function log(...args: any[]): Promise<void> {
+    // tslint:disable-next-line:no-console
+    return console.log(...args) as any;
 }
 
 export async function printNumbers(from: number, to: number): Promise<number[]> {

@@ -1,5 +1,5 @@
-import {decorateNumber, doJob} from "./lib";
-import {assert, expect} from "chai";
+import {decorateNumber, doJob} from './lib';
+import {assert, expect} from 'chai';
 
 describe('decorateNumbers', () => {
     it('should print just number', () => {
@@ -41,7 +41,7 @@ describe('doJob', () => {
     });
 });
 
-function* attemptsGenerator() {
+function* attemptsGenerator(): IterableIterator<Promise<void>> {
     yield Promise.reject();
     yield Promise.reject();
     yield Promise.resolve();

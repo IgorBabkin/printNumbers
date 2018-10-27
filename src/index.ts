@@ -1,6 +1,6 @@
-import {printNumbers} from "./lib";
+import {log, printNumbers} from './lib';
 
 (async () => {
-   const failed = await printNumbers(0, 100);
-   console.log(failed);
+    const failed = await printNumbers(0, 100);
+    await log(failed);
 })();
