@@ -24,20 +24,3 @@ export async function doJob(job: IJob, attempt: number): Promise<void> {
         await doJob(job, attempt - 1);
     }
 }
-
-export function log(...args: any[]): Promise<void> {
-    // tslint:disable-next-line:no-console
-    return console.log(...args) as any;
-}
-
-export async function printNumbers(from: number, to: number): Promise<number[]> {
-    const failed: number[] = [];
-    for (let i = from; i <= to; i++) {
-        try {
-            await doJob(() => log(decorateNumber(i)), 3);
-        } catch (e) {
-            failed.push(i);
-        }
-    }
-    return failed;
-}
