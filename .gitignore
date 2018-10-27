@@ -1,0 +1,12 @@
+node_modules
+dist
+yarn-error.log
+.idea
+.vscode
+.DS_Store
+.nyc_output
+coverage
+builds
+public
+actual.png
+diff.png
