@@ -12,7 +12,8 @@ export function decorateNumber(i: number): string {
     return output.trim();
 }
 
-async function doJob(job: () => Promise<void>, attempt: number): Promise<void> {
+export type IJob = () => Promise<void>;
+export async function doJob(job: IJob, attempt: number): Promise<void> {
     if (attempt <= 0) {
         return Promise.reject();
     }
