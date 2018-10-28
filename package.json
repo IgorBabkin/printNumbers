@@ -9,7 +9,7 @@
     "lint-fix": "yarn lint --fix",
     "pretest": "yarn lint",
     "test": "mocha 'src/**/*.spec.ts' --require ts-node/register",
-    "precommit": "yarn test",
+    "prepush": "yarn test",
     "predeploy": "yarn test && webpack",
     "deploy": "gh-pages -d dist"
   },

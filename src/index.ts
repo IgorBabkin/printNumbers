@@ -1,30 +1,35 @@
 import {decorateNumber, doJob} from './lib';
 
-function printInDocument(message: string): void {
+function documentPrintMessage(message: string, color: string = 'black'): void {
     const root = document.getElementById('output');
     const div = document.createElement('div');
     div.innerText = message;
+    div.style.color = color;
     root.appendChild(div);
     window.scrollTo(0, document.body.scrollHeight);
 }
 
-export function printInConsole(...args: any[]): Promise<void> {
+function documentLog(message: string): void {
+    documentPrintMessage(message);
+}
+
+function documentError(message: string): void {
+    documentPrintMessage(message, 'red');
+}
+
+export function consoleLog(...args: any[]): Promise<void> {
     // tslint:disable-next-line:no-console
     return console.log(...args) as any;
 }
 
 (async () => {
-    const failed: number[] = [];
-
     for (let i = 0; i <= 100; i++) {
+        const message = decorateNumber(i);
         try {
-            const message = decorateNumber(i);
-            await doJob(() => printInConsole(message), 3);
-            printInDocument(message);
+            await doJob(() => consoleLog(message), 3);
+            documentLog(message);
         } catch (e) {
-            failed.push(i);
+            documentError(`Failed to log: ${message}`);
         }
     }
-
-    printInDocument(`Failed: ${failed.length > 0 ? failed.join(', ') : 'nothing'}`);
 })();
